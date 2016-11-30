@@ -1,0 +1,12 @@
+{
+  "host": "albums.crabstudio.info",
+  "port": 80,
+  "mongodb": "mongodb://45.117.160.28:27017/album",
+  "public": "../public/",
+  "auth": {
+    "token": {
+      "secret": "JKHASKJDhqowhdkjahsdpwoiekfhJKHASJgqhjwbeIIUHjqbdbas7123jHAJSdhqwdjkansd"
+    },
+    "local": {}
+  }
+}

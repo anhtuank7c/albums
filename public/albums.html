@@ -1,0 +1,151 @@
+<html>
+  <head>
+    <title>Welcome to Feathers</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body {
+        font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+        font-weight: 400;
+        font-size: 16px;
+        color: #333;
+      }
+
+      .center-text {
+        text-align: center;
+      }
+
+      main {
+        margin-top: 100px;
+        padding: 20px;
+      }
+
+      img.logo {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        font-size: 2em;
+        font-weight: 100;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px;
+      }
+
+      footer p {
+        font-weight: 300;
+        font-size: 1.0em;
+      }
+
+      a {
+        color: #31D8A0;
+        text-decoration: none;
+      }
+
+      a:hover,
+      a:focus {
+        color: #31D8A0;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h2 class="center-text">album list</h2>
+      <footer>
+        <p class="center-text">RestFull API for react native</p>
+      </footer>
+    </main>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/core-js/2.1.4/core.min.js"></script>
+    <script src="//unpkg.com/feathers-client@^1.0.0/dist/feathers.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.6.0/socket.io.min.js"></script>
+    <script type="text/javascript">
+      // Establish a Socket.io connection to the local server
+      var socket = io();
+      // create a client side Feathers application that uses the socket for connecting to services
+      var app = feathers();
+      app.configure(feathers.socketio(socket));
+      var albums = app.service('albums');
+
+      // listen created event
+      albums.on('created', function (album) {
+        console.log("Someone created a album", album);
+      });
+
+      // listen removed event
+      albums.on('removed', function (result) {
+        console.log("Someone removed a album", result);
+      });
+
+      //create a new album on the service
+      albums.create({
+        title: 'Top Hits Remix',
+        artist: 'Luna Band',
+        url: 'http://mp3.zing.vn/album/Top-Hits-Remix-Luna-Band/ZOUZ97OO.html',
+        image: 'http://zmp3-photo.d.za.zdn.vn/thumb/240_240/covers/7/f/7f9a94cfc18c6ec42392c94f051f3fd6_1477725009.jpg',
+        thumnail_image: 'http://zmp3-photo.d.za.zdn.vn/thumb/165_165/covers/7/f/7f9a94cfc18c6ec42392c94f051f3fd6_1477725009.jpg',
+      });
+      albums.create({
+        title: 'Người Dưng Khác Họ 2',
+        artist: 'Cao VũVũ',
+        url: 'http://mp3.zing.vn/album/Nguoi-Dung-Khac-Ho-2-Cao-Vu/ZOU667CD.html',
+        image: 'http://zmp3-photo.d.za.zdn.vn/thumb/165_165/covers/2/5/251a27314cbf2c2937c822b538476fdf_1478756720.jpg',
+        thumnail_image: 'http://zmp3-photo.d.za.zdn.vn/thumb/165_165/covers/2/5/251a27314cbf2c2937c822b538476fdf_1478756720.jpg',
+      });
+      albums.create({
+        title: 'Vì Lòng Còn Thương',
+        artist: 'Dương Hồng Loan',
+        url: 'http://mp3.zing.vn/album/Vi-Long-Con-Thuong-Duong-Hong-Loan/ZWZCUBUO.html',
+        image: 'http://zmp3-photo.d.za.zdn.vn/thumb/240_240/covers/c/2/c28412fb995b0bb58ad5788f6092089c_1466060200.jpg',
+        thumnail_image: 'http://zmp3-photo.d.za.zdn.vn/thumb/240_240/covers/c/2/c28412fb995b0bb58ad5788f6092089c_1466060200.jpg',
+      });
+      albums.create({
+        title: 'Nhật Ký Mồ Côi',
+        artist: 'Trung Quang',
+        url: 'http://mp3.zing.vn/album/Nhat-Ky-Mo-Coi-Trung-Quang/ZOUW0FB8.html',
+        image: 'http://zmp3-photo.d.za.zdn.vn/thumb/240_240/covers/4/4/44046d2810d4ab79619fc5a1eae33b79_1473049199.jpg',
+        thumnail_image: 'http://zmp3-photo.d.za.zdn.vn/thumb/240_240/covers/4/4/44046d2810d4ab79619fc5a1eae33b79_1473049199.jpg',
+      });
+      albums.create({
+        title: 'Hương Xưa',
+        artist: 'Hồ Quỳnh Hương',
+        url: 'http://mp3.zing.vn/album/Huong-Xua-Ho-Quynh-Huong/ZOUZ8UDB.html',
+        image: 'http://zmp3-photo.d.za.zdn.vn/thumb/240_240/covers/7/1/7156ebd2c35f9d14fca83e6ac26a4302_1477642273.jpg',
+        thumnail_image: 'http://zmp3-photo.d.za.zdn.vn/thumb/240_240/covers/7/1/7156ebd2c35f9d14fca83e6ac26a4302_1477642273.jpg',
+      });
+      albums.create({
+        title: 'Tình Khúc Bất Hủ Song Ca (Tuyệt phẩm Trữ Tình)',
+        artist: 'Quang Lê',
+        url: 'http://mp3.zing.vn/album/Tinh-Khuc-Bat-Hu-Song-Ca-Tuyet-Pham-Tru-Tinh-Que-Huong-Quang-Le/ZWZAIFO0.html',
+        image: 'http://zmp3-photo.d.za.zdn.vn/thumb/165_165/covers/e/7/e7d144f7f61bb6d7293a29d3231dc6bf_1341509488.jpg',
+        thumnail_image: 'http://zmp3-photo.d.za.zdn.vn/thumb/165_165/covers/e/7/e7d144f7f61bb6d7293a29d3231dc6bf_1341509488.jpg',
+      });
+      albums.create({
+        title: 'Tuyển Tập Các Bài Hát Hay Nhất Của Cẩm LyLy',
+        artist: 'Cẩm Ly',
+        url: 'http://mp3.zing.vn/album/Tuyen-Tap-Cac-Bai-Hat-Hay-Nhat-Cua-Cam-Ly-Cam-Ly/ZWZ9AEB8.html',
+        image: 'http://zmp3-photo.d.za.zdn.vn/thumb/165_165/covers/2/c/2c68295c116f7d1eaaddfc38ea7a28e4_1393308986.jpg',
+        thumnail_image: 'http://zmp3-photo.d.za.zdn.vn/thumb/165_165/covers/2/c/2c68295c116f7d1eaaddfc38ea7a28e4_1393308986.jpg',
+      });
+      albums.create({
+        title: 'Tuyển Tập Những Bài Hát Hay Nhất Của Phương Mỹ Chi',
+        artist: 'Phương Mỹ Chi',
+        url: 'http://mp3.zing.vn/album/Tuyen-Tap-Nhung-Bai-Hat-Hay-Nhat-Cua-Phuong-My-Chi-Phuong-My-Chi/ZWZAE0OW.html',
+        image: 'http://zmp3-photo.d.za.zdn.vn/thumb/165_165/covers/4/0/40adf3fca12f7ec036a032348698a63e_1377069071.jpg',
+        thumnail_image: 'http://zmp3-photo.d.za.zdn.vn/thumb/165_165/covers/4/0/40adf3fca12f7ec036a032348698a63e_1377069071.jpg',
+      });
+      // albums.remove('583327e503e0ac265bdc0c9d');
+    </script>
+  </body>
+</html>

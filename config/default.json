@@ -1,0 +1,12 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "mongodb": "mongodb://45.117.160.28:27017/album",
+  "public": "../public/",
+  "auth": {
+    "token": {
+      "secret": "q27ltPqWOIAk2iuCH10hCQF8tImPxM0ssy9KW6r0Qcs7Ts7BJkGfWacjx0YfKvmDT3PWhP2Z/nbzbs+CDi4IXQ=="
+    },
+    "local": {}
+  }
+}
