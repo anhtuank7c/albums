@@ -1,4 +1,5 @@
 'use strict';
+const news = require('./news');
 const albums = require('./albums');
 const musics = require('./musics');
 const authentication = require('./authentication');
@@ -14,4 +15,5 @@ module.exports = function() {
   app.configure(user);
   app.configure(musics);
   app.configure(albums);
+  app.configure(news);
 };
